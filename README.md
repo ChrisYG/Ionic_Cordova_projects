@@ -1,2 +1,2 @@
-# Todo_IonicCordova
-A hybrid todo mobile app using Ionic framwork and Apache Cordova
+# Ionic_Cordova_projects
+Some practice projects of me learning mobile development, using Ionic and Cordova
