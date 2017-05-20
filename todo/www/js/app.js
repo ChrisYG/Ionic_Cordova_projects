@@ -88,6 +88,15 @@ todoApp.controller('TodoController', function ($scope, $timeout, $ionicModal, Pr
   
     $scope.toggleProjects = function () {  
         $ionicSideMenuDelegate.toggleLeft();  
+    };
+    // remove an element
+    $scope.deleteTask = function (index) {
+        var result = confirm("Are you sure you want to delete this task?");
+        if (result) {
+            $scope.activeProject.tasks.splice(index,1);
+            Projects.save($scope.projects);            
+        }
+
     };  
   
   

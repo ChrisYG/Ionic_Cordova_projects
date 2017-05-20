@@ -50,7 +50,7 @@
             </ion-header-bar>  
             <ion-content scroll="false">  
                 <ion-list>  
-                    <ion-item ng-repeat="task in activeProject.tasks">  
+                    <ion-item ng-repeat="task in activeProject.tasks" on-swipe-right="deleteTask($index)">  
                         {{task.title}}  
                     </ion-item>  
                 </ion-list>  
