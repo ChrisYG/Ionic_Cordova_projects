@@ -90,16 +90,16 @@ todoApp.controller('TodoController', function ($scope, $timeout, $ionicModal, Pr
         $ionicSideMenuDelegate.toggleLeft();  
     };
     // remove an element
-    $scope.deleteTask = function (index) {
-        var result = confirm("Are you sure you want to delete this task?");
-        if (result) {
+    $scope.removeTask = function (index, deleteTask) {
+        if (deleteTask) {
+            var result = confirm("Are you sure you want to delete this task?");
+        }
+        if (!deleteTask || result) {
             $scope.activeProject.tasks.splice(index,1);
             Projects.save($scope.projects);            
         }
 
     };  
-  
-  
     // Try to create the first project, make sure to defer  
     // this by using $timeout so everything is initialized  
     // properly  

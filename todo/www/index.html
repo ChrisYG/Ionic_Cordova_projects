@@ -49,11 +49,11 @@
                 </button>  
             </ion-header-bar>  
             <ion-content scroll="false">  
-                <ion-list>  
-                    <ion-item ng-repeat="task in activeProject.tasks" on-swipe-right="deleteTask($index)">  
+                <ion-list>
+                    <ion-checkbox ng-click="removeTask($index, false)" ng-repeat="task in activeProject.tasks" on-swipe-right="removeTask($index, true)">  
                         {{task.title}}  
-                    </ion-item>  
-                </ion-list>  
+                    </ion-checkbox>  
+                </ion-list> 
             </ion-content>  
         </ion-side-menu-content>  
   
