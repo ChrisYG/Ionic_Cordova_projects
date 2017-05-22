@@ -96,21 +96,22 @@ todoApp.controller('TodoController', function ($scope, $timeout, $ionicModal, Pr
         }
         if (!deleteTask || result) {
             $scope.activeProject.tasks.splice(index,1);
-            Projects.save($scope.projects);            
-        }
-        var note = '';
-        if (deleteTask) {
-            note = 'Task deleted';
-        } else {
-            note = 'Task finished';
-        }
-        var removalPopup = $ionicPopup.show({
-            title: note
-        });
+            Projects.save($scope.projects);
+            var note = '';
+            if (deleteTask) {
+                note = 'Task deleted';
+            } else {
+                note = 'Task finished';
+            }
+            var removalPopup = $ionicPopup.show({
+                title: note
+            });
 
-        $timeout(function() {
-            removalPopup.close();
-        }, 1000);
+            $timeout(function() {
+                removalPopup.close();
+            }, 1000);       
+        }
+
     };  
     // Try to create the first project, make sure to defer  
     // this by using $timeout so everything is initialized  
