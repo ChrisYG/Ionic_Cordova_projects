@@ -23,7 +23,7 @@ todoApp.run(function($ionicPlatform) {
   });
 });
 
-todoApp.controller('TodoController', function ($scope, $timeout, $ionicModal, Projects, $ionicSideMenuDelegate) {  
+todoApp.controller('TodoController', function ($scope, $timeout, $ionicModal, Projects, $ionicSideMenuDelegate, $ionicPopup) {  
   
     // A utility function for creating a new project  
     // with the given projectTitle  
@@ -84,7 +84,7 @@ todoApp.controller('TodoController', function ($scope, $timeout, $ionicModal, Pr
   
     $scope.closeNewTask = function () {  
         $scope.taskModal.hide();  
-    }  
+    };  
   
     $scope.toggleProjects = function () {  
         $ionicSideMenuDelegate.toggleLeft();  
@@ -98,7 +98,19 @@ todoApp.controller('TodoController', function ($scope, $timeout, $ionicModal, Pr
             $scope.activeProject.tasks.splice(index,1);
             Projects.save($scope.projects);            
         }
+        var note = '';
+        if (deleteTask) {
+            note = 'Task deleted';
+        } else {
+            note = 'Task finished';
+        }
+        var removalPopup = $ionicPopup.show({
+            title: note
+        });
 
+        $timeout(function() {
+            removalPopup.close();
+        }, 1000);
     };  
     // Try to create the first project, make sure to defer  
     // this by using $timeout so everything is initialized  
